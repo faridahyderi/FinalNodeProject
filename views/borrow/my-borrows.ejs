@@ -1,0 +1,20 @@
+<!-- views/borrow/my-borrows.ejs -->
+
+<h2>My Borrowed Books</h2>
+<ul>
+    <% borrowedBooks.forEach(borrow => { %>
+        <li>
+            <%= borrow.book.title %> - Due: <%= borrow.dueDate.toDateString() %>
+            <form action="/borrow/return" method="POST">
+                <input type="hidden" name="borrowId" value="<%= borrow._id %>">
+                <button type="submit">Return</button>
+            </form>
+            <% if (borrow.renewalCount < 2) { %>
+                <form action="/borrow/renew" method="POST">
+                    <input type="hidden" name="borrowId" value="<%= borrow._id %>">
+                    <button type="submit">Renew</button>
+                </form>
+            <% } %>
+        </li>
+    <% }) %>
+</ul>

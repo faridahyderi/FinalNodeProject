@@ -1,0 +1,19 @@
+<!-- views/books/index.ejs -->
+
+<h2>Books</h2>
+<ul>
+    <% books.forEach(book => { %>
+        <li>
+            <%= book.title %> by <%= book.author %> - <%= book.status %>
+            <% if (user && user.role === 'admin') { %>
+                <a href="/books/edit/<%= book._id %>">Edit</a>
+                <form action="/books/delete/<%= book._id %>" method="POST"><button type="submit">Delete</button></form>
+            <% } else if (book.status === 'available') { %>
+                <form action="/borrow/borrow" method="POST">
+                    <input type="hidden" name="bookId" value="<%= book._id %>">
+                    <button type="submit">Borrow</button>
+                </form>
+            <% } %>
+        </li>
+    <% }) %>
+</ul>

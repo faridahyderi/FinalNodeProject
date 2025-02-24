@@ -1,0 +1,10 @@
+<!-- views/borrow/my-fines.ejs -->
+
+<h2>My Fines</h2>
+<ul>
+    <% fines.forEach(fine => { %>
+        <li>
+            Book: <%= fine.book.title %> - Fine: $<%= fine.fine %>
+        </li>
+    <% }) %>
+</ul>

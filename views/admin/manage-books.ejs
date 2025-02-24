@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <script>
+      alert("manage-books is running")
+    </script>
+  </head>
+<body>
+<h1>Admin - Manage Books</h1>
+
+<!-- Display the list of books -->
+<ul>
+  <% books.forEach(book => { %>
+    <li><%= book.title %> - <%= book.author %></li>
+  <% }) %>
+</ul>
+
+<!-- Optional: You can also add a script tag to confirm the page rendering -->
+
+
+<!-- Include External JavaScript File -->
+<script src="/js/manageBooks.js"></script>
+</body>
+</html>

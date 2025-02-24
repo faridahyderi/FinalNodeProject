@@ -1,0 +1,31 @@
+<!-- views/layout.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management</title>
+    <link rel="stylesheet" href="/styles.css">
+    <!-- Include the JWT Decode script -->
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <!-- Alert to confirm JavaScript is running -->
+    
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <% if (!user) { %>
+            <a href="/auth/login">Login</a>
+            <a href="/auth/register">Register</a>
+        <% } else { %>
+            <a href="/books">Books</a>
+            <a href="/borrow/my-borrows">My Borrows</a>
+            <a href="/borrow/my-fines">My Fines</a>
+            <form action="/auth/logout" method="POST"><button type="submit">Logout</button></form>
+        <% } %>
+    </nav>
+    <main>
+        <%- body %>  
+    </main>
+</body>
+</html>
